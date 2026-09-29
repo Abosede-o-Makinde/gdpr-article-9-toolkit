@@ -1,0 +1,36 @@
+[project]
+name = "gdpr-article-9-toolkit"
+version = "0.1.0"
+description = "Checks UK GDPR Article 9 processing conditions for special category data"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+keywords = [
+    "gdpr",
+    "article-9",
+    "special-category-data",
+    "data-protection",
+    "compliance",
+    "python",
+    "privacy",
+    "uk-gdpr",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["tests/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]

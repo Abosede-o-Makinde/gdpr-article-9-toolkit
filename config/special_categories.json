@@ -1,0 +1,39 @@
+{
+  "article": "9(1)",
+  "source": "UK GDPR Article 9(1). Decision-support only, not legal advice.",
+  "categories": [
+    {
+      "id": "racial_or_ethnic_origin",
+      "label": "Racial or ethnic origin"
+    },
+    {
+      "id": "political_opinions",
+      "label": "Political opinions"
+    },
+    {
+      "id": "religious_or_philosophical_beliefs",
+      "label": "Religious or philosophical beliefs"
+    },
+    {
+      "id": "trade_union_membership",
+      "label": "Trade union membership"
+    },
+    {
+      "id": "genetic_data",
+      "label": "Genetic data"
+    },
+    {
+      "id": "biometric_identification",
+      "label": "Biometric data for unique identification",
+      "note": "Only biometric data processed to uniquely identify a natural person. Accuracy scoring stays in biometric-auth-analysis."
+    },
+    {
+      "id": "health",
+      "label": "Data concerning health"
+    },
+    {
+      "id": "sex_life_or_sexual_orientation",
+      "label": "Data concerning sex life or sexual orientation"
+    }
+  ]
+}
