@@ -1,0 +1,254 @@
+{
+  "article": "9(2)",
+  "source": "UK GDPR Article 9(2)(a) to (j). Condition (g) asks for a Data Protection Act 2018 Schedule 1 condition by name. This file does not encode every Schedule 1 paragraph. Decision-support only, not legal advice.",
+  "conditions": [
+    {
+      "id": "a",
+      "paragraph": "9(2)(a)",
+      "name": "Explicit consent",
+      "summary": "The data subject has given explicit consent for one or more specified purposes.",
+      "required_evidence": [
+        {
+          "field": "explicit_consent_recorded",
+          "type": "bool",
+          "required": true,
+          "description": "Explicit consent is recorded for this special category processing."
+        },
+        {
+          "field": "specified_purpose",
+          "type": "bool",
+          "required": true,
+          "description": "Consent names the specified purpose, separate from a general privacy notice."
+        },
+        {
+          "field": "withdrawal_possible",
+          "type": "bool",
+          "required": true,
+          "description": "The data subject can withdraw consent."
+        }
+      ]
+    },
+    {
+      "id": "b",
+      "paragraph": "9(2)(b)",
+      "name": "Employment, social security and social protection",
+      "summary": "Processing is necessary for employment, social security, or social protection obligations or rights, and is authorised by law or a collective agreement with appropriate safeguards.",
+      "required_evidence": [
+        {
+          "field": "employment_or_social_protection_purpose",
+          "type": "bool",
+          "required": true,
+          "description": "The purpose is an employment, social security, or social protection obligation or right."
+        },
+        {
+          "field": "law_or_collective_agreement_cited",
+          "type": "string",
+          "required": true,
+          "description": "Cite the UK law or collective agreement that authorises this processing."
+        },
+        {
+          "field": "appropriate_safeguards",
+          "type": "bool",
+          "required": true,
+          "description": "Appropriate safeguards for the data subject's rights are in place."
+        }
+      ]
+    },
+    {
+      "id": "c",
+      "paragraph": "9(2)(c)",
+      "name": "Vital interests",
+      "summary": "Processing is necessary to protect the vital interests of the data subject or another person, and the data subject is physically or legally incapable of giving consent.",
+      "required_evidence": [
+        {
+          "field": "protects_vital_interests",
+          "type": "bool",
+          "required": true,
+          "description": "Processing is necessary to protect life."
+        },
+        {
+          "field": "subject_incapable_of_consent",
+          "type": "bool",
+          "required": true,
+          "description": "The data subject is physically or legally incapable of giving consent."
+        }
+      ]
+    },
+    {
+      "id": "d",
+      "paragraph": "9(2)(d)",
+      "name": "Not-for-profit body",
+      "summary": "A not-for-profit body with a political, philosophical, religious, or trade union aim processes data about members, former members, or people in regular contact, and does not disclose it outside the body without consent.",
+      "required_evidence": [
+        {
+          "field": "body_aim",
+          "type": "string",
+          "required": true,
+          "description": "State the aim: political, philosophical, religious, or trade union."
+        },
+        {
+          "field": "members_or_regular_contact",
+          "type": "bool",
+          "required": true,
+          "description": "Processing relates only to members, former members, or people in regular contact with the body."
+        },
+        {
+          "field": "no_external_disclosure_without_consent",
+          "type": "bool",
+          "required": true,
+          "description": "Data is not disclosed outside the body without the data subject's consent."
+        },
+        {
+          "field": "appropriate_safeguards",
+          "type": "bool",
+          "required": true,
+          "description": "The body has appropriate safeguards for this processing."
+        }
+      ]
+    },
+    {
+      "id": "e",
+      "paragraph": "9(2)(e)",
+      "name": "Manifestly made public",
+      "summary": "The personal data were manifestly made public by the data subject.",
+      "required_evidence": [
+        {
+          "field": "manifestly_made_public_by_subject",
+          "type": "bool",
+          "required": true,
+          "description": "The data subject themselves made this data public. Disclosure by someone else does not qualify."
+        }
+      ]
+    },
+    {
+      "id": "f",
+      "paragraph": "9(2)(f)",
+      "name": "Legal claims",
+      "summary": "Processing is necessary to establish, exercise, or defend legal claims, or a court is acting in its judicial capacity.",
+      "required_evidence": [
+        {
+          "field": "necessary_for_legal_claims",
+          "type": "bool",
+          "required": true,
+          "description": "Processing is necessary for a legal claim or for a court acting judicially."
+        },
+        {
+          "field": "claim_or_proceeding",
+          "type": "string",
+          "required": true,
+          "description": "Identify the claim, proceeding, or judicial function."
+        }
+      ]
+    },
+    {
+      "id": "g",
+      "paragraph": "9(2)(g)",
+      "name": "Substantial public interest",
+      "summary": "Processing is necessary for reasons of substantial public interest, on the basis of UK law that is proportionate and has suitable safeguards. Name the Data Protection Act 2018 Schedule 1 condition. Individual Schedule 1 paragraphs are not encoded here.",
+      "required_evidence": [
+        {
+          "field": "schedule_1_condition",
+          "type": "string",
+          "required": true,
+          "description": "Name the Data Protection Act 2018 Schedule 1 substantial public interest condition relied on."
+        },
+        {
+          "field": "law_cited",
+          "type": "string",
+          "required": true,
+          "description": "Cite the UK law that provides the substantial public interest basis."
+        },
+        {
+          "field": "suitable_safeguards",
+          "type": "bool",
+          "required": true,
+          "description": "Suitable and specific safeguards for the data subject's rights are in place."
+        },
+        {
+          "field": "appropriate_policy_document",
+          "type": "bool",
+          "required": true,
+          "description": "State whether an appropriate policy document is in place where Schedule 1 requires one."
+        }
+      ]
+    },
+    {
+      "id": "h",
+      "paragraph": "9(2)(h)",
+      "name": "Health or social care",
+      "summary": "Processing is necessary for preventive or occupational medicine, working-capacity assessment, medical diagnosis, health or social care, or the management of those systems, subject to Article 9(3) professional secrecy.",
+      "required_evidence": [
+        {
+          "field": "health_or_social_care_purpose",
+          "type": "bool",
+          "required": true,
+          "description": "The purpose is health or social care as described in Article 9(2)(h)."
+        },
+        {
+          "field": "professional_secrecy",
+          "type": "bool",
+          "required": true,
+          "description": "Article 9(3): processing is by, or under the responsibility of, a person subject to professional secrecy."
+        },
+        {
+          "field": "law_or_health_professional_contract",
+          "type": "bool",
+          "required": true,
+          "description": "Processing rests on UK law or a contract with a health professional."
+        }
+      ]
+    },
+    {
+      "id": "i",
+      "paragraph": "9(2)(i)",
+      "name": "Public health",
+      "summary": "Processing is necessary for public interest in public health, such as serious health threats or standards for health care, medicines, or medical devices, with suitable safeguards including professional secrecy.",
+      "required_evidence": [
+        {
+          "field": "public_health_purpose",
+          "type": "string",
+          "required": true,
+          "description": "Describe the public health purpose."
+        },
+        {
+          "field": "law_cited",
+          "type": "string",
+          "required": true,
+          "description": "Cite the UK law that provides for this public health processing."
+        },
+        {
+          "field": "suitable_safeguards",
+          "type": "bool",
+          "required": true,
+          "description": "Suitable safeguards are in place, including professional secrecy where it applies."
+        }
+      ]
+    },
+    {
+      "id": "j",
+      "paragraph": "9(2)(j)",
+      "name": "Archiving, research or statistics",
+      "summary": "Processing is necessary for archiving in the public interest, scientific or historical research, or statistics, in accordance with Article 89(1) and UK law.",
+      "required_evidence": [
+        {
+          "field": "archiving_research_or_statistics_purpose",
+          "type": "string",
+          "required": true,
+          "description": "State whether the purpose is archiving, scientific or historical research, or statistics."
+        },
+        {
+          "field": "article_89_safeguards",
+          "type": "bool",
+          "required": true,
+          "description": "Article 89(1) safeguards are in place."
+        },
+        {
+          "field": "law_cited",
+          "type": "string",
+          "required": true,
+          "description": "Cite the UK law that authorises this processing."
+        }
+      ]
+    }
+  ]
+}
