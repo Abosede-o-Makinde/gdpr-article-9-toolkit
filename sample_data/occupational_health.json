@@ -1,0 +1,25 @@
+{
+  "activity_id": "OH-001",
+  "name": "Occupational health screening",
+  "organisation": "Example Healthcare Trust",
+  "purpose": "Assess fitness for a safety-critical role",
+  "special_categories": ["health"],
+  "data_subjects": "employees in safety-critical roles",
+  "claimed_condition": "h",
+  "evidence": {
+    "health_or_social_care_purpose": true,
+    "professional_secrecy": true,
+    "law_or_health_professional_contract": true
+  },
+  "dpia_completed": true,
+  "ropa_activity_id": "PA-OH-001",
+  "ropa_fields": {
+    "purposes_recorded": true,
+    "data_subject_categories_recorded": true,
+    "personal_data_categories_recorded": true,
+    "recipients_recorded": true,
+    "retention_recorded": true,
+    "security_measures_recorded": true
+  },
+  "notes": "Worked PASS example. Article 9(2)(h) with Article 9(3) professional secrecy. A DPIA is still flagged."
+}
