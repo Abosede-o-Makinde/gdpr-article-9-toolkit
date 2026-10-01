@@ -1,0 +1,14 @@
+{
+  "activity_id": "BIO-001",
+  "name": "Biometric door access",
+  "organisation": "Northgate Facilities",
+  "purpose": "Unlock the staff entrance by facial recognition",
+  "special_categories": ["biometric_identification"],
+  "data_subjects": "staff and regular contractors",
+  "claimed_condition": "",
+  "evidence": {},
+  "dpia_completed": false,
+  "ropa_activity_id": "",
+  "ropa_fields": {},
+  "notes": "Worked FAIL example. Biometric data used to uniquely identify people, with no Article 9(2) condition. Accuracy scoring stays in biometric-auth-analysis."
+}

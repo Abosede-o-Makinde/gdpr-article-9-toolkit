@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 
 from src.article9.conditions import ConditionsConfigError, load_conditions
-from src.article9.engine import ConditionChecker, Finding, band_for
+from src.article9.engine import PROHIBITION_RULE, ConditionChecker, Finding, band_for
 from src.article9.parser import load_activity
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +25,17 @@ def test_occupational_health_passes() -> None:
     assert result.findings == []
     assert result.condition_label == "Art. 9(2)(h) Health or social care"
     assert all(row.status == "MET" for row in result.evidence)
+
+
+def test_biometric_access_fails_without_a_condition() -> None:
+    result = _assess("biometric_door_access.json")
+    assert result.band == "FAIL"
+    assert result.score == 0
+    assert result.condition_label == ""
+    prohibition = [item for item in result.findings if item.rule_id == PROHIBITION_RULE]
+    assert len(prohibition) == 1
+    assert prohibition[0].severity == "FAIL"
+    assert "9(1)" in prohibition[0].articles_label
 
 
 def test_false_evidence_fails_the_condition() -> None:
