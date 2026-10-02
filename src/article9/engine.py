@@ -9,6 +9,7 @@ from src.article9.conditions import (
     ProcessingCondition,
     load_conditions,
 )
+from src.article9.dpia_flag import DpiaFlag, flag_dpia
 from src.models.activity import ProcessingActivity
 
 PROHIBITION_RULE = "A9-01"
@@ -57,6 +58,7 @@ class Assessment:
     activity: ProcessingActivity
     findings: list[Finding]
     evidence: list[EvidenceRow]
+    dpia: DpiaFlag
     score: float
     band: str
     condition_label: str
@@ -112,6 +114,7 @@ class ConditionChecker:
             activity=activity,
             findings=findings,
             evidence=evidence,
+            dpia=flag_dpia(activity),
             score=score,
             band=band_for(findings),
             condition_label=label,

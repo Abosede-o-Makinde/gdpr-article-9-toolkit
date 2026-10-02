@@ -24,6 +24,9 @@ def test_occupational_health_passes() -> None:
     assert result.score == 100
     assert result.findings == []
     assert result.condition_label == "Art. 9(2)(h) Health or social care"
+    assert result.dpia.required is True
+    assert result.dpia.completed is True
+    assert "Article 35" in result.dpia.message
     assert all(row.status == "MET" for row in result.evidence)
 
 
@@ -36,6 +39,7 @@ def test_biometric_access_fails_without_a_condition() -> None:
     assert len(prohibition) == 1
     assert prohibition[0].severity == "FAIL"
     assert "9(1)" in prohibition[0].articles_label
+    assert result.dpia.completed is False
 
 
 def test_false_evidence_fails_the_condition() -> None:
@@ -83,6 +87,14 @@ def test_missing_evidence_field_is_reported() -> None:
     missing = [row for row in result.evidence if row.field == "professional_secrecy"]
     assert missing[0].status == "MISSING"
     assert result.band == "FAIL"
+
+
+def test_dpia_completion_not_recorded() -> None:
+    activity = load_activity(ROOT / "sample_data" / "occupational_health.json")
+    activity.dpia_completed = None
+    result = ConditionChecker().assess(activity)
+    assert result.dpia.required is True
+    assert "not recorded" in result.dpia.message
 
 
 def test_band_for_partial_only() -> None:
