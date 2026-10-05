@@ -1,0 +1,52 @@
+{
+  "activity_id": "MEM-001",
+  "name": "Membership political opinions",
+  "organisation": "Riverside Civic Society",
+  "purpose": "Record political opinions of members for internal campaign planning",
+  "special_categories": [
+    "political_opinions"
+  ],
+  "claimed_condition": "d",
+  "condition_label": "Art. 9(2)(d) Not-for-profit body",
+  "score": 90.0,
+  "band": "PARTIAL",
+  "dpia_required": true,
+  "dpia_completed": true,
+  "dpia_message": "Article 35 requires a DPIA before this special category processing. A DPIA is recorded as completed. This check does not generate the DPIA.",
+  "evidence": [
+    {
+      "field": "body_aim",
+      "status": "MET",
+      "description": "State the aim: political, philosophical, religious, or trade union."
+    },
+    {
+      "field": "members_or_regular_contact",
+      "status": "MET",
+      "description": "Processing relates only to members, former members, or people in regular contact with the body."
+    },
+    {
+      "field": "no_external_disclosure_without_consent",
+      "status": "MET",
+      "description": "Data is not disclosed outside the body without the data subject's consent."
+    },
+    {
+      "field": "appropriate_safeguards",
+      "status": "MET",
+      "description": "The body has appropriate safeguards for this processing."
+    }
+  ],
+  "finding_count": 1,
+  "findings": [
+    {
+      "rule_id": "A9-30",
+      "severity": "PARTIAL",
+      "title": "Article 30 field not recorded: Envisaged time limits for erasure",
+      "articles": [
+        "30"
+      ],
+      "weight": 10,
+      "remediation": "Record envisaged time limits for erasure on the Article 30 record for this activity."
+    }
+  ],
+  "disclaimer": "Decision-support only. Not legal advice."
+}

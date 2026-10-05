@@ -1,0 +1,101 @@
+{
+  "activity_id": "BIO-001",
+  "name": "Biometric door access",
+  "organisation": "Northgate Facilities",
+  "purpose": "Unlock the staff entrance by facial recognition",
+  "special_categories": [
+    "biometric_identification"
+  ],
+  "claimed_condition": "",
+  "condition_label": "",
+  "score": 0.0,
+  "band": "FAIL",
+  "dpia_required": true,
+  "dpia_completed": false,
+  "dpia_message": "Article 35 requires a DPIA before this special category processing. No completed DPIA is recorded. This check does not generate the DPIA.",
+  "evidence": [],
+  "finding_count": 8,
+  "findings": [
+    {
+      "rule_id": "A9-01",
+      "severity": "FAIL",
+      "title": "Article 9(1) prohibits this processing until a 9(2) condition is identified",
+      "articles": [
+        "9(1)"
+      ],
+      "weight": 100,
+      "remediation": "Claim one Article 9(2)(a) to (j) condition and record its evidence."
+    },
+    {
+      "rule_id": "A9-30",
+      "severity": "PARTIAL",
+      "title": "Article 30 record is not identified",
+      "articles": [
+        "30"
+      ],
+      "weight": 10,
+      "remediation": "Give this activity an id in the Record of Processing Activities."
+    },
+    {
+      "rule_id": "A9-30",
+      "severity": "PARTIAL",
+      "title": "Article 30 field not recorded: Purposes of processing",
+      "articles": [
+        "30"
+      ],
+      "weight": 10,
+      "remediation": "Record purposes of processing on the Article 30 record for this activity."
+    },
+    {
+      "rule_id": "A9-30",
+      "severity": "PARTIAL",
+      "title": "Article 30 field not recorded: Categories of data subjects",
+      "articles": [
+        "30"
+      ],
+      "weight": 10,
+      "remediation": "Record categories of data subjects on the Article 30 record for this activity."
+    },
+    {
+      "rule_id": "A9-30",
+      "severity": "PARTIAL",
+      "title": "Article 30 field not recorded: Categories of personal data, including special category data",
+      "articles": [
+        "30"
+      ],
+      "weight": 10,
+      "remediation": "Record categories of personal data, including special category data on the Article 30 record for this activity."
+    },
+    {
+      "rule_id": "A9-30",
+      "severity": "PARTIAL",
+      "title": "Article 30 field not recorded: Recipients or categories of recipients",
+      "articles": [
+        "30"
+      ],
+      "weight": 10,
+      "remediation": "Record recipients or categories of recipients on the Article 30 record for this activity."
+    },
+    {
+      "rule_id": "A9-30",
+      "severity": "PARTIAL",
+      "title": "Article 30 field not recorded: Envisaged time limits for erasure",
+      "articles": [
+        "30"
+      ],
+      "weight": 10,
+      "remediation": "Record envisaged time limits for erasure on the Article 30 record for this activity."
+    },
+    {
+      "rule_id": "A9-30",
+      "severity": "PARTIAL",
+      "title": "Article 30 field not recorded: Security measures",
+      "articles": [
+        "30"
+      ],
+      "weight": 10,
+      "remediation": "Record security measures on the Article 30 record for this activity."
+    }
+  ],
+  "disclaimer": "Decision-support only. Not legal advice."
+}

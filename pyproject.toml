@@ -1,6 +1,6 @@
 [project]
 name = "gdpr-article-9-toolkit"
-version = "0.1.0"
+version = "1.0.0"
 description = "Checks UK GDPR Article 9 processing conditions for special category data"
 requires-python = ">=3.11"
 license = { text = "MIT" }

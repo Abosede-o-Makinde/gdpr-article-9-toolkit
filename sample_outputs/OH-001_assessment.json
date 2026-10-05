@@ -1,0 +1,36 @@
+{
+  "activity_id": "OH-001",
+  "name": "Occupational health screening",
+  "organisation": "Example Healthcare Trust",
+  "purpose": "Assess fitness for a safety-critical role",
+  "special_categories": [
+    "health"
+  ],
+  "claimed_condition": "h",
+  "condition_label": "Art. 9(2)(h) Health or social care",
+  "score": 100.0,
+  "band": "PASS",
+  "dpia_required": true,
+  "dpia_completed": true,
+  "dpia_message": "Article 35 requires a DPIA before this special category processing. A DPIA is recorded as completed. This check does not generate the DPIA.",
+  "evidence": [
+    {
+      "field": "health_or_social_care_purpose",
+      "status": "MET",
+      "description": "The purpose is health or social care as described in Article 9(2)(h)."
+    },
+    {
+      "field": "professional_secrecy",
+      "status": "MET",
+      "description": "Article 9(3): processing is by, or under the responsibility of, a person subject to professional secrecy."
+    },
+    {
+      "field": "law_or_health_professional_contract",
+      "status": "MET",
+      "description": "Processing rests on UK law or a contract with a health professional."
+    }
+  ],
+  "finding_count": 0,
+  "findings": [],
+  "disclaimer": "Decision-support only. Not legal advice."
+}
