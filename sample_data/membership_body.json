@@ -1,0 +1,26 @@
+{
+  "activity_id": "MEM-001",
+  "name": "Membership political opinions",
+  "organisation": "Riverside Civic Society",
+  "purpose": "Record political opinions of members for internal campaign planning",
+  "special_categories": ["political_opinions"],
+  "data_subjects": "current members",
+  "claimed_condition": "d",
+  "evidence": {
+    "body_aim": "political",
+    "members_or_regular_contact": true,
+    "no_external_disclosure_without_consent": true,
+    "appropriate_safeguards": true
+  },
+  "dpia_completed": true,
+  "ropa_activity_id": "PA-MEM-001",
+  "ropa_fields": {
+    "purposes_recorded": true,
+    "data_subject_categories_recorded": true,
+    "personal_data_categories_recorded": true,
+    "recipients_recorded": true,
+    "retention_recorded": false,
+    "security_measures_recorded": true
+  },
+  "notes": "Worked PARTIAL example. Article 9(2)(d) evidence is present. The Article 30 retention field is missing."
+}

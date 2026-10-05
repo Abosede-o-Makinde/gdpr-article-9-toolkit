@@ -1,4 +1,4 @@
-"""Tests for scoring a claimed Article 9(2) condition."""
+"""Tests for Article 9 scoring, the DPIA flag, and Article 30 gaps."""
 
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ def _assess(name: str):
     return ConditionChecker().assess(activity)
 
 
-def test_occupational_health_passes() -> None:
+def test_occupational_health_passes_and_still_flags_dpia() -> None:
     result = _assess("occupational_health.json")
     assert result.band == "PASS"
     assert result.score == 100
@@ -40,6 +40,18 @@ def test_biometric_access_fails_without_a_condition() -> None:
     assert prohibition[0].severity == "FAIL"
     assert "9(1)" in prohibition[0].articles_label
     assert result.dpia.completed is False
+
+
+def test_membership_body_is_partial_when_retention_is_missing() -> None:
+    result = _assess("membership_body.json")
+    assert result.band == "PARTIAL"
+    assert result.score == 90
+    assert len(result.findings) == 1
+    gap = result.findings[0]
+    assert gap.rule_id == "A9-30"
+    assert gap.severity == "PARTIAL"
+    assert "time limits" in gap.title
+    assert all(row.status == "MET" for row in result.evidence)
 
 
 def test_false_evidence_fails_the_condition() -> None:

@@ -10,15 +10,17 @@ from src.article9.conditions import (
     load_conditions,
 )
 from src.article9.dpia_flag import DpiaFlag, flag_dpia
+from src.article9.ropa_fields import ropa_gaps
 from src.models.activity import ProcessingActivity
 
 PROHIBITION_RULE = "A9-01"
 EVIDENCE_RULE = "A9-02"
+ROPA_RULE = "A9-30"
 
 
 @dataclass
 class Finding:
-    """One gap in the claimed Article 9(2) condition."""
+    """One gap in the Article 9 condition or the Article 30 record."""
 
     rule_id: str
     severity: str
@@ -69,7 +71,7 @@ def format_score(score: float) -> str:
 
 
 def band_for(findings: list[Finding]) -> str:
-    """FAIL if a prohibition or evidence check failed; otherwise PASS when nothing is open."""
+    """FAIL if a prohibition or evidence check failed; PARTIAL if only Article 30 gaps remain."""
     if any(item.severity == "FAIL" for item in findings):
         return "FAIL"
     if findings:
@@ -78,7 +80,7 @@ def band_for(findings: list[Finding]) -> str:
 
 
 class ConditionChecker:
-    """Apply Article 9(2)(a)-(j) evidence rules to one activity."""
+    """Apply Article 9(2)(a)-(j) evidence rules and Article 30 field checks."""
 
     def __init__(self, conditions: tuple[ProcessingCondition, ...] | None = None) -> None:
         loaded = conditions if conditions is not None else load_conditions()
@@ -109,6 +111,17 @@ class ConditionChecker:
             label = f"Art. {condition.paragraph} {condition.name}"
             evidence = _evidence_rows(activity, condition)
             findings.extend(_evidence_findings(evidence))
+        for gap in ropa_gaps(activity):
+            findings.append(
+                Finding(
+                    rule_id=ROPA_RULE,
+                    severity="PARTIAL",
+                    title=gap.title,
+                    articles=("30",),
+                    weight=10,
+                    remediation=gap.remediation,
+                )
+            )
         score = round(max(0.0, 100.0 - sum(item.weight for item in findings)), 1)
         return Assessment(
             activity=activity,
@@ -157,3 +170,13 @@ def _evidence_findings(rows: list[EvidenceRow]) -> list[Finding]:
             )
         )
     return findings
+
+
+__all__ = [
+    "Assessment",
+    "ConditionChecker",
+    "ConditionsConfigError",
+    "Finding",
+    "band_for",
+    "format_score",
+]
