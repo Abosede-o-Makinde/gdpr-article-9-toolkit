@@ -13,9 +13,13 @@ from src import __version__
 from src.article9.conditions import ConditionsConfigError
 from src.article9.engine import Assessment, ConditionChecker, format_score
 from src.article9.parser import ActivityParseError, load_activity
+from src.reporter import NO_GAPS, safe_output_stem
+from src.reporter.json_report import write_json
+from src.reporter.markdown_report import write_markdown
+from src.reporter.pdf_report import Article9PdfReport
 
 console = Console()
-NO_GAPS = "No Article 9 condition gaps and no Article 30 field gaps."
+DEFAULT_OUTPUT_DIR = Path("outputs")
 
 
 def _style_for(label: str) -> str:
@@ -85,10 +89,23 @@ def _print_evidence(result: Assessment) -> None:
     console.print(table)
 
 
+def _write_reports(result: Assessment, output_dir: Path) -> None:
+    stem = safe_output_stem(result.activity.activity_id)
+    markdown_path = write_markdown(result, output_dir / f"{stem}_assessment.md")
+    json_path = write_json(result, output_dir / f"{stem}_assessment.json")
+    pdf_path = Article9PdfReport().generate(result, output_dir / f"{stem}_assessment.pdf")
+    console.print(
+        Panel(
+            f"Markdown: {markdown_path}\nJSON: {json_path}\nPDF: {pdf_path}",
+            title="Report export",
+        )
+    )
+
+
 @click.command()
 @click.option(
     "--mode",
-    type=click.Choice(["check", "conditions"]),
+    type=click.Choice(["check", "conditions", "report"]),
     default="check",
     show_default=True,
     help="Workflow mode to run.",
@@ -100,16 +117,26 @@ def _print_evidence(result: Assessment) -> None:
     type=click.Path(path_type=Path),
     help="JSON processing activity.",
 )
+@click.option(
+    "--output",
+    "output_dir",
+    type=click.Path(path_type=Path),
+    default=DEFAULT_OUTPUT_DIR,
+    show_default=True,
+    help="Directory for Markdown, JSON, and PDF outputs.",
+)
 @click.version_option(version=__version__, prog_name="gdpr-article-9-toolkit")
-def cli(mode: str, input_path: Path) -> None:
+def cli(mode: str, input_path: Path, output_dir: Path) -> None:
     """Check UK GDPR Article 9 processing conditions for special category data."""
     try:
         result = _assess(input_path)
         _print_summary(result)
         if mode == "conditions":
             _print_evidence(result)
-        if mode == "check":
+        if mode in {"check", "report"}:
             _print_findings(result)
+        if mode == "report":
+            _write_reports(result, output_dir)
     except (ActivityParseError, ConditionsConfigError, OSError) as exc:
         console.print(f"[red]Error:[/red] {exc}")
         raise SystemExit(1) from exc
